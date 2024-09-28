@@ -8,7 +8,7 @@
 *
 *
 *******************************************************************************
-* Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2022-2024, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -61,18 +61,6 @@
 #define TCP_SERVER_MAX_PENDING_CONNECTIONS        (3u)
 #define TCP_SERVER_RECV_TIMEOUT_MS                (500u)
 #define MAX_TCP_RECV_BUFFER_SIZE                  (20u)
-
-/* Set to 1 to use static IP addressing for TCP server */
-#define ENABLE_STATIC_IP_ADDRESS (0u)
-
-#if ENABLE_STATIC_IP_ADDRESS
-/* Set the static IP address of the TCP server keeping the gateway
- * and subnet mask address same as that of TCP client
- */
-#define TCP_STATIC_IP_ADDR   MAKE_IPV4_ADDRESS( 192, 168, 1, 8 )
-#define TCP_STATIC_GATEWAY   MAKE_IPV4_ADDRESS( 192, 168, 1, 1 )
-#define TCP_NETMASK          MAKE_IPV4_ADDRESS( 255, 255, 255, 0 )
-#endif
 
 /*******************************************************************************
 * Function Prototypes

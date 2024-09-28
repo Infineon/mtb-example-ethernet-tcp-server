@@ -1,10 +1,12 @@
+#!/usr/bin/env python
+
 #******************************************************************************
 # File Name:   tcp_client.py
 #
 # Description: A simple python based TCP client.
-# 
+#
 #******************************************************************************
-# Copyright 2019-2022, Cypress Semiconductor Corporation (an Infineon company) or
+# Copyright 2019-2024, Cypress Semiconductor Corporation (an Infineon company) or
 # an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 #
 # This software, including source code, documentation and related
@@ -34,18 +36,14 @@
 # including Cypress's product in a High Risk Product, the manufacturer
 # of such system or application assumes all risk of such use and in doing
 # so agrees to indemnify Cypress against all liability.
-#******************************************************************************
+#******************************************************************************/
 
-#!/usr/bin/env python
 import socket
-import optparse
-import time
-import sys
 
 BUFFER_SIZE = 1024
 
 # IP details for the TCP server
-DEFAULT_IP   = '192.168.1.8'     # IP address of the TCP server
+DEFAULT_IP   = '192.168.0.10'    # IP address of the TCP server
 DEFAULT_PORT = 50007             # Port of the TCP server
 
 DEFAULT_KEEP_ALIVE = 1           # TCP Keep Alive: 1 - Enable, 0 - Disable
@@ -60,9 +58,9 @@ s.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPINTVL, 1)
 s.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPCNT, 2)
 s.connect((DEFAULT_IP, DEFAULT_PORT))
 print("Connected to TCP Server (IP Address: ", DEFAULT_IP, "Port: ", DEFAULT_PORT, " )")
-    
-while 1:
-    print("================================================================================")        
+
+while True:
+    print("================================================================================")
     data = s.recv(BUFFER_SIZE);
     print("Command from Server:")
     if data.decode('utf-8') == '0':
@@ -73,6 +71,6 @@ while 1:
         print("LED ON")
         message = 'LED ON ACK'
         s.send(message.encode('utf-8'))
-    print("Acknowledgement sent to server")        
+    print("Acknowledgement sent to server")
 
 # [] END OF FILE
